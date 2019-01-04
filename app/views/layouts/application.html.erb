@@ -9,7 +9,10 @@
   <body>
     <a href="<%= root_url %>">Home</a>
     <% if current_user %>
-    <a href="<%= purchases_path %>">Purchases</a>
+    <a hred="#">Profile</a>
+    <a href="<%= purchases_path %>">List of Items</a>
+    <a hred="#">User's Items</a>
+    <a hred="#">Buy an Item</a>
     <a rel="nofollow" data-method="delete" href="<%= signout_path %>">Log out</a>
     <% else %>
     <a href="<%= new_user_path %>">Sign Up</a>

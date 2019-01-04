@@ -1,33 +1,74 @@
 class ItemsController < ApplicationController
+  before_action :set_purchase, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @purchases = Purchase.all
+    @user = User.find(session[:user_id])
+    respond_to do |f|
+      f.html { render :index }
+      f.json { render json: @purchases}
+    end
+  end
+
+  def show
+    @item = Item.new
+    respond_to do |f|
+      f.html { render :show }
+      f.json { render json: @item}
+    end
+  end
 
   def new
-     # Join table method that creates a new item that connects a user to a purchase
-    @item = Item.find_by(:user_id => params[:user_id], :purchase_id => params[:purchase_id])
-    if @item == nil
-      @item = Item.create(
-        :user_id => params[:user_id],
-        :purchase_id => params[:purchase_id],
-        :quantity => 1
-      )
-    else
-      @item.quantity += 1
-      @item.save
-      # make sure quantity going up by 1
-      # go to item index for a user and show the quantity,
-      # Make an edit link next to item, click edit, item show page, and only thing you can change is the quantity, prepopulated input field
-    end
-    @message = @item.buy_item
-    redirect_to user_path(@item.user, :message => @message)
+    # can I make this a nested route?
+    @purchase = Purchase.new
   end
 
   def edit
-    @item = Item.find(params[:id])
+  end
+
+  def create
+    @purchase = Purchase.new(purchase_params)
+    respond_to do |format|
+      if @purchase.save
+        format.html { redirect_to @purchase, notice: 'Purchase was successfully created.' }
+      else
+        format.html { render :new }
+      end
+    end
   end
 
   def update
-    @item = Item.find(params[:id])
-    @item.update(quantity: params[:item][:quantity])
-    redirect_to user_cart_index_url(current_user)
+    respond_to do |format|
+      if @purchase.update(purchase_params)
+        format.html { redirect_to @purchase, notice: "Purchase was successfully updated."}
+      else
+        format.htnl { render :edit }
+      end
+    end
   end
 
+  def destroy
+    # Delets the purchasing you're looking at in the purchases#show view
+    Purchase.find(params[:id]).destroy
+    respond_to do |format|
+      format.html { redirect_to purchases_url, notice: 'Attraction was successfully destroyed.'}
+    end
+  end
+
+  def highestprice
+  end
+
+  private
+
+  def set_purchase
+    @purchase = Purchase.find(params[:id])
+  end
+
+  def purchase_params
+    params.require(:purchase).permit(
+      :name,
+      :price,
+      :quantity
+    )
+  end
 end
