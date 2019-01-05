@@ -31,9 +31,9 @@
 </table>
 <br>
 
-<strong>Average Price of Purchases</strong> $<%= @items.average_price %><br>
-<strong>Most Expensive to Purchase</strong> <%= @items.most_expensive.name %><br>
-<strong>Least Expensive to Purchase</strong> <%= @items.least_expensive.name %><br><br>
+<!-- <strong>Average Price of Purchases</strong> $<#%= @items.average_price %><br>
+<strong>Most Expensive to Purchase</strong> <#%= @items.most_expensive.name %><br>
+<strong>Least Expensive to Purchase</strong> <#%= @items.least_expensive.name %><br><br> -->
 
 <% if @user.admin %>
   <p><%= link_to "Create Purchase", new_user_purchase_path(@user), {:class => "btn btn-primary"} %></p>

@@ -10,9 +10,3 @@ $(function() {
     e.preventDefault();
   })
 })
-
-$(function() {
-  $("a.purchases").on("click", function(e){
-    alert("You clicked this")
-  })
-})
