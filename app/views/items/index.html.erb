@@ -14,16 +14,16 @@
       <td><strong>Amount in Stock</strong></td>
       <td><strong>Details</strong></td>
     </tr>
-    <% @purchases.each do |purchase| %>
+    <% @items.each do |item| %>
       <tr>
 
-        <td><%= purchase.name %></td>
-        <td>$<%= purchase.price %></td>
-        <td><%= purchase.quantity %></td>
+        <td><%= item.name %></td>
+        <td>$<%= item.price %></td>
+        <td><%= item.quantity %></td>
         <% if current_user.admin%>
-        <td><%= link_to "Show #{purchase.name}", purchase_path(purchase), {:class => "btn btn-primary"} %></td>
+        <td><%= link_to "Show #{item.name}", purchase_path(purchase), {:class => "btn btn-primary"} %></td>
         <% else %>
-        <td><%= link_to "Pick up #{purchase.name}", purchase_path(purchase), {:class => "btn btn-primary"} %></td>
+        <td><%= link_to "Pick up #{item.name}", purchase_path(purchase), {:class => "btn btn-primary"} %></td>
         <% end %>
       </tr>
     <% end %>
@@ -31,9 +31,9 @@
 </table>
 <br>
 
-<strong>Average Price of Purchases</strong> $<%= @purchases.average_price %><br>
-<strong>Most Expensive to Purchase</strong> <%= @purchases.most_expensive.name %><br>
-<strong>Least Expensive to Purchase</strong> <%= @purchases.least_expensive.name %><br><br>
+<strong>Average Price of Purchases</strong> $<%= @items.average_price %><br>
+<strong>Most Expensive to Purchase</strong> <%= @items.most_expensive.name %><br>
+<strong>Least Expensive to Purchase</strong> <%= @items.least_expensive.name %><br><br>
 
 <% if @user.admin %>
   <p><%= link_to "Create Purchase", new_user_purchase_path(@user), {:class => "btn btn-primary"} %></p>

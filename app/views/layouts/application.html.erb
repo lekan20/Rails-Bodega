@@ -7,22 +7,25 @@
   </head>
 
   <body>
-    <a href="<%= root_url %>">Home</a>
-    <% if current_user %>
-    <a hred="#">Profile</a>
-    <a href="<%= purchases_path %>">List of Items</a>
-    <a hred="#">User's Items</a>
-    <a hred="#">Buy an Item</a>
-    <a rel="nofollow" data-method="delete" href="<%= signout_path %>">Log out</a>
-    <% else %>
-    <a href="<%= new_user_path %>">Sign Up</a>
-    <a href="<%= signin_path %>">Log in</a>
-    <% end %>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">
+          Rails Bodega
+        </h1>
+      </div>
+      <div class="column">
+        <%= link_to "Home", root_url %> |
+        <%= link_to "Items to Purchase", items_path %> |
+        <%= link_to "Sign Out", signout_path %> |
+        <hr>
+        <div id="flash_messages" class="flash_style">
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, :class => "flash #{key}") %>
+          <% end %>
+        </div>
+        <%= yield %>
+      </div>
+    </section>
 
-
-
-    <div class="container" role="main">
-    <%= yield %>
-  </div>
   </body>
 </html>

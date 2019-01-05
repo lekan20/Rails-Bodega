@@ -1,15 +1,6 @@
-<h1> <%= Purchase.find(@item.purchase_id).name %> </h1>
+<h1>Edit Purchase</h1>
 
-<h3> Price: $<%= Purchase.find(@item.purchase_id).price %> </h3>
+<%= render 'form' %>
 
-<%= form_for(@item) do |f|%>
-
-<div class="form-group">
-  <%= f.label :quantity %><br>
-  <%= f.number_field :quantity, class: "form-control" %></div>
-
-<div class="form-group">
-  <%= f.submit class: "btn btn-primary" %>
-</div>
-
-<% end %>
+<%= link_to 'Show', @purchase %><br>
+<%= link_to 'Back', purchase_path %>

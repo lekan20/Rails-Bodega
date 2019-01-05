@@ -11,5 +11,5 @@ Rails.application.routes.draw do
     resources :items, only: [:new]
   end
   resources :user_items, only: [:new, :edit, :update]
-  resources :purchases
+  resources :items
 end

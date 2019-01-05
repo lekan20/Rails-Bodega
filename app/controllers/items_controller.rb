@@ -2,11 +2,11 @@ class ItemsController < ApplicationController
   before_action :set_purchase, only: [:show, :edit, :update, :destroy]
 
   def index
-    @purchases = Purchase.all
+    @items = Item.all
     @user = User.find(session[:user_id])
     respond_to do |f|
       f.html { render :index }
-      f.json { render json: @purchases}
+      f.json { render json: @items}
     end
   end
 
@@ -20,17 +20,17 @@ class ItemsController < ApplicationController
 
   def new
     # can I make this a nested route?
-    @purchase = Purchase.new
+    @item = Item.new
   end
 
   def edit
   end
 
   def create
-    @purchase = Purchase.new(purchase_params)
+    @item = Item.new(purchase_params)
     respond_to do |format|
-      if @purchase.save
-        format.html { redirect_to @purchase, notice: 'Purchase was successfully created.' }
+      if @item.save
+        format.html { redirect_to @item, notice: 'Purchase was successfully created.' }
       else
         format.html { render :new }
       end
