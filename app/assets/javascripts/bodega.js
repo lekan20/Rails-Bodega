@@ -1,5 +1,8 @@
-$(function () {
-    console.log("bodega.js loaded ...");
+$(function(){
+  $("a.items-link").on("click", function(e){
+    alert("You clicked this link")
+    e.preventDefault()
+  })
 })
 
 $(function() {
