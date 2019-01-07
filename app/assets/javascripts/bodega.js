@@ -1,3 +1,7 @@
+$(function () {
+    console.log("bodega.js loaded ...");
+})
+
 $(function() {
   $("a.see_cart").on("click", function(e){
     $.ajax({
