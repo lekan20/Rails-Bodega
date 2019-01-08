@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
-  before_action :set_purchase, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.all
+    binding.pry
     @user = User.find(session[:user_id])
     respond_to do |f|
       f.html { render :index }

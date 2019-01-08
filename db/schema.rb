@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 2018_06_14_000947) do
 
   create_table "user_items", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "items_id"
+    t.integer "item_id"
     t.integer "quantity"
-    t.index ["items_id"], name: "index_user_items_on_items_id"
+    t.index ["item_id"], name: "index_user_items_on_item_id"
     t.index ["user_id"], name: "index_user_items_on_user_id"
   end
 

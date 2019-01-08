@@ -16,14 +16,14 @@
     </tr>
     <% @items.each do |item| %>
       <tr>
-
+        binding.pry
         <td><%= item.name %></td>
         <td>$<%= item.price %></td>
         <td><%= item.quantity %></td>
         <% if current_user.admin%>
-        <td><%= link_to "Show #{item.name}", purchase_path(purchase), {:class => "btn btn-primary"} %></td>
-        <% else %>
-        <td><%= link_to "Pick up #{item.name}", purchase_path(purchase), {:class => "btn btn-primary"} %></td>
+        <!-- <td><#%= link_to "Show #{item.name}", purchase_path(purchase) %></td>
+        <#% else %>
+        <td><#%= link_to "Pick up #{item.name}", purchase_path(purchase) %></td> -->
         <% end %>
       </tr>
     <% end %>
@@ -34,14 +34,3 @@
 <!-- <strong>Average Price of Purchases</strong> $<#%= @items.average_price %><br>
 <strong>Most Expensive to Purchase</strong> <#%= @items.most_expensive.name %><br>
 <strong>Least Expensive to Purchase</strong> <#%= @items.least_expensive.name %><br><br> -->
-
-<% if @user.admin %>
-  <p><%= link_to "Create Purchase", new_user_purchase_path(@user), {:class => "btn btn-primary"} %></p>
-  <p>
-    <%= link_to "Back to Profile", user_path(@user), {:class => "btn btn-primary"} %>
-  </p>
-<% else %>
-  <p>
-    <%= link_to "Back to Profile", user_path(@user), {:class => "btn btn-primary"} %>
-  </p>
-<% end %>
