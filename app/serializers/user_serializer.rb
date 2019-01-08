@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :password_digest, :money, :admin
-  has_many :items
-  has_many :purchases, :through => :items
+  attributes :id, :name, :money, :admin
+  has_many :user_items
+  has_many :items, :through => :user_items
 end

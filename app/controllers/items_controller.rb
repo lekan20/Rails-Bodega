@@ -19,7 +19,6 @@ class ItemsController < ApplicationController
   end
 
   def new
-    # can I make this a nested route?
     @item = Item.new
   end
 
@@ -27,10 +26,10 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(purchase_params)
+    @item = Item.new(item_params)
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Purchase was successfully created.' }
+        format.html { redirect_to @item, notice: 'Item was successfully created.' }
       else
         format.html { render :new }
       end
@@ -39,19 +38,19 @@ class ItemsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @purchase.update(purchase_params)
-        format.html { redirect_to @purchase, notice: "Purchase was successfully updated."}
+      if @item.update(item_params)
+        format.html { redirect_to @item, notice: "Item was successfully updated."}
       else
-        format.htnl { render :edit }
+        format.html { render :edit }
       end
     end
   end
 
   def destroy
     # Delets the purchasing you're looking at in the purchases#show view
-    Purchase.find(params[:id]).destroy
+    Item.find(params[:id]).destroy
     respond_to do |format|
-      format.html { redirect_to purchases_url, notice: 'Attraction was successfully destroyed.'}
+      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.'}
     end
   end
 
@@ -60,12 +59,12 @@ class ItemsController < ApplicationController
 
   private
 
-  def set_purchase
-    @purchase = Purchase.find(params[:id])
+  def set_item
+    @item = Item.find(params[:id])
   end
 
-  def purchase_params
-    params.require(:purchase).permit(
+  def items_params
+    params.require(:item).permit(
       :name,
       :price,
       :quantity

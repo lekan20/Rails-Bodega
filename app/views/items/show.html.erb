@@ -1,22 +1,22 @@
 <div class="center">
 
   <div class="info">
-    <p><strong>Name:</strong> <%= @purchase.name %></p>
-    <p><strong>Price:</strong> $<%= @purchase.price %></p>
-    <p><strong>Amount in Stock:</strong> <%= @purchase.quantity %></p>
+    <p><strong>Name:</strong> <%= @item.name %></p>
+    <p><strong>Price:</strong> $<%= @item.price %></p>
+    <p><strong>Amount in Stock:</strong> <%= @item.quantity %></p>
     <% if current_user.admin %>
-      <%= link_to 'Edit Purchase', [:edit, @purchase] %></p>
-      <%= link_to 'Delete', purchase_path, method: :delete, data: {confirm: 'For Real?' } %>
+      <p><%= link_to 'Edit Purchase', [:edit, @item] %></p>
+      <%= link_to 'Delete', item_path, method: :delete, data: {confirm: 'For Real?' } %>
     <% else %>
       <form action="/items/new" method="post">
         <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)  %>
         <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
-        <%= tag(:input, :type => "hidden", :name => :purchase_id, :value => @purchase.id) %>
+        <%= tag(:input, :type => "hidden", :name => :item_id, :value => @item.id) %>
         <input class="btn btn-light" type="submit" value="Purchase">
       </form>
     <% end %><br>
 
-  <%= link_to 'Back', purchases_path, class: "btn btn-light" %></p>
+  <p><%= link_to 'Back', items_path %></p>
 
   </div>
 </div>

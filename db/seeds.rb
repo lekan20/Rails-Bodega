@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+Item.delete_all
 Item.create(name: "Doritos", price: 1.0, quantity: 10)
 Item.create(name: "Paper Towels 6 Rolls", price: 10.0, quantity: 10)
 Item.create(name: "Tide Liquid Detergent", price: 15.0, quantity: 10)
@@ -14,5 +14,6 @@ Item.create(name: "Tortilla Chips", price: 4.0, quantity: 10)
 Item.create(name: "Oatly Oat Milk", price: 5.0, quantity: 10)
 Item.create(name: "Glad Zipper Food Storage bags", price: 3.0, quantity: 10)
 
+User.delete_all
 User.create(name: "Oscar McCamey", password: "dog", money: 100)
 User.create(name: "Olive DeAngelis", password: "dog", money: 100, admin: true)

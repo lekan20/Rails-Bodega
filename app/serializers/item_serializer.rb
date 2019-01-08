@@ -1,5 +1,5 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :purchase_id, :quantity
-  belongs_to :user
-  belongs_to :purchase
+  attributes :id, :name, :price, :quantity
+  has_many :user_items
+  has_many :users, :through => :user_items
 end

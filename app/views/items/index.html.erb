@@ -16,15 +16,10 @@
     </tr>
     <% @items.each do |item| %>
       <tr>
-        binding.pry
         <td><%= item.name %></td>
         <td>$<%= item.price %></td>
         <td><%= item.quantity %></td>
-        <% if current_user.admin%>
-        <!-- <td><#%= link_to "Show #{item.name}", purchase_path(purchase) %></td>
-        <#% else %>
-        <td><#%= link_to "Pick up #{item.name}", purchase_path(purchase) %></td> -->
-        <% end %>
+        <td><%= link_to "Pick Up", item_path(item) %></td>  
       </tr>
     <% end %>
   </tbody>
