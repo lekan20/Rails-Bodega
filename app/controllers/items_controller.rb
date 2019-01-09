@@ -10,13 +10,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @item = Item.new
-    respond_to do |f|
-      f.html { render :show }
-      f.json { render json: @item}
-    end
-  end
+  # def show
+  #   @item = Item.new
+  # end
 
   def new
     @item = Item.new
