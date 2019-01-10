@@ -17,8 +17,7 @@ const getItems = () => {
     .then(items => {
       items.forEach((item) => {
         let newList = new List(item)
-        // $("div.items-to-purchase").html(newList.listHTML()) - start here 1/10
-        debugger;
+        $("div.items-to-purchase").append(newList.formatIndex())
       })
     })
 }
@@ -32,11 +31,15 @@ class List {
   }
 }
 
-List.prototype.listHTML = function() {
+List.prototype.formatIndex = function() {
     return (`
-      <li>${this.name}</li>
-      <li>${this.price}</li>
-      <li>${this.quantity}</li>
+      <tbody>
+        <tr>
+          <td>${this.name} </td>
+          <td>${this.price} </td>
+          <td>${this.quantity}</td>
+        </tr>
+      </tbody>
     `)
 }
 
