@@ -24,7 +24,6 @@ const getItems = () => {
 
 class List {
   constructor(obj) {
-    debugger;
     this.id = obj.id
     this.name = obj.name
     this.price = obj.price
