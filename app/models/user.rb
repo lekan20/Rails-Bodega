@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   def cart_price
     # Adds up the total price of the users item
-    self.user_items.sum do |item|
+    self.user_items.sum do |user_item|
       Item.find(user_item.item_id).price * user_item.quantity
     end
   end

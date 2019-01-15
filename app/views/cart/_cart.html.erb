@@ -14,11 +14,11 @@
       <td><strong>Quantity</strong></td>
     </tr>
 
-  <% @user.items.each do |item| %>
+  <% @user.user_items.each do |user_item| %>
     <tr>
-      <td><%= Purchase.find(item.purchase_id).name %></td>
-      <td>$<%= Purchase.find(item.purchase_id).price %></td>
-      <td><%= item.quantity %> &nbsp; &nbsp; &nbsp; <%= link_to 'Edit',"/items/#{item.id}/edit" %></td>
+      <td><%= Item.find(user_item.item_id).name %></td>
+      <td>$<%= Item.find(user_item.item_id).price %></td>
+      <td><%= user_item.quantity %> </td>
     </tr>
     <% end %>
     </tbody>

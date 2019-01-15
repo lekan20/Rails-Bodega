@@ -14,23 +14,23 @@ def create_users
 end
 
 def create_user_items
-	UserItem.create(user_id: 1, item_id: 1)
-	UserItem.create(user_id: 1, item_id: 2)
-	UserItem.create(user_id: 1, item_id: 3)
-	UserItem.create(user_id: 1, item_id: 4)
-	UserItem.create(user_id: 1, item_id: 5)
+	UserItem.create(user_id: 1, item_id: 1, quantity: 2)
+	UserItem.create(user_id: 1, item_id: 2, quantity: 5)
+	UserItem.create(user_id: 1, item_id: 3, quantity: 3)
+	UserItem.create(user_id: 1, item_id: 4, quantity: 3)
+	UserItem.create(user_id: 1, item_id: 5, quantity: 3)
 
-	UserItem.create(user_id: 2, item_id: 1)
-	UserItem.create(user_id: 2, item_id: 2)
-	UserItem.create(user_id: 2, item_id: 3)
-	UserItem.create(user_id: 2, item_id: 4)
-	UserItem.create(user_id: 2, item_id: 5)
+	UserItem.create(user_id: 2, item_id: 1, quantity: 4)
+	UserItem.create(user_id: 2, item_id: 2, quantity: 4)
+	UserItem.create(user_id: 2, item_id: 3, quantity: 4)
+	UserItem.create(user_id: 2, item_id: 4, quantity: 4)
+	UserItem.create(user_id: 2, item_id: 5, quantity: 4)
 end
 
 def truncate_database
+  UserItem.delete_all
 	User.delete_all
 	Item.delete_all
-	UserItem.delete_all
 
 	# these methods reset the ID back to 0 if you are using Sqlite3 database
 	connection = ActiveRecord::Base.connection()

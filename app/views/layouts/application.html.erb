@@ -26,6 +26,7 @@
         <% if current_user %>
         <%= link_to "Items to Purchase", items_path, class: 'items-link' %> |
         <%= link_to "Profile", users_path %> |
+        <%= link_to "See Cart", '/users/1/cart', class: 'see-cart' %> |
         <%= link_to "Sign Out", signout_path %> |
         <% else %>
         <%= link_to "Sign Up", new_user_path %> |
@@ -40,6 +41,7 @@
         <%= yield %>
       </div>
       <div class="items-to-purchase"></div>
+      <div class="cart"></div>
     </section>
 
   </body>

@@ -3,7 +3,11 @@ class CartController < ApplicationController
     @items = Item.all
     @user = User.find(params[:user_id])
 
-    render 'cart/index', :layout => false
+    respond_to do |f|
+      f.html { render :index }
+      f.json { render json: @user}
+    end
+
   end
 
 end

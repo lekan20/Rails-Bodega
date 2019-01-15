@@ -37,26 +37,28 @@ List.prototype.formatIndex = function() {
       <tbody>
         <tr>
           <td> ${this.name} </td>
-          <td>${this.price} </td>
-          <td>${this.quantity}</td>
-          <td></td>
+          <td> ${this.price} </td>
+          <td> ${this.quantity} </td>
+          <td><a href='/items/${this.id}'>Pick Up</a></td>
         </tr>
       </tbody>
     `)
 }
 
 
-$(function() {
-  $("a.see_cart").on("click", function(e){
-    $.ajax({
-      method: "GET",
-      url: this.href
-    }).done(function( response ) {
+$(function () {
+	$("a.see-cart").on("click", function (e) {
+		$.ajax({
+			method: "GET",
+			url: this.href,
+			dataType: 'json'
+		}).done(function (response) {
 
-      $("div.cart").html(response)
-  });
-    e.preventDefault();
-  })
+			let newUser = new User(response)
+			$("div.cart").html(newUser.userHTML())
+		});
+		e.preventDefault();
+	})
 })
 
 class User {
@@ -64,24 +66,20 @@ class User {
 		this.id = obj.id
 		this.name = obj.name
 		this.money = obj.money
-		this.items = obj.items
-		this.purchases = obj.purchases
+		this.user_items = obj.user_items
 		this.admin = obj.admin
 	}
 }
 
 User.prototype.userHTML = function () {
 
-	let userItems = this.items.map((item, index) => {
+	let userItems = this.user_items.map((user_item, index) => {
 		return (`
-			<li>${item.purchase_id}</li>
+			<li>${user_item.item_id}</li>
 		`)
-	})
+	}).join('')
 
 	return (`
-		<div>${this.name}</div>
-		<div>${this.money}</div>
-		<div>${this.admin}</div>
 		<div><ol>${userItems}</ol></div>
 	`)
 }
