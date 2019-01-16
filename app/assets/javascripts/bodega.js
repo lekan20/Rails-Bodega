@@ -66,19 +66,19 @@ class User {
 		this.id = obj.id
 		this.name = obj.name
 		this.money = obj.money
-		this.user_items = obj.user_items
+		this.items = obj.items
 		this.admin = obj.admin
+    this.user_items = obj.user_items
 	}
 }
 
 User.prototype.userHTML = function () {
 
-	let userItems = this.user_items.map((user_item, index) => {
-		return (`
-			<li>${user_item.item_id}</li>
+	let userItems = this.items.map((item, index) => {
+    return (`
+			<li>${item.name}</li>
 		`)
 	}).join('')
-
 	return (`
 		<div><ol>${userItems}</ol></div>
 	`)
