@@ -57,6 +57,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+    respond_to do |f|
+      f.html { render :show }
+      f.json { render json: @item.to_json(only: [:id, :name, :price, :quantity])}
+    end
   end
 
   def items_params

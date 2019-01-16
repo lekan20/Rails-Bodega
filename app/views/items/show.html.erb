@@ -1,3 +1,21 @@
-<p><strong>Name:</strong> <%= @item.name %></p>
-<p><strong>Price:</strong> <%= @item.price %></p>
-<p><strong>Quantity:</strong> <%= @item.quantity %></p>
+<p class="itemName" ><strong>Name:</strong> <%= @item.name %></p>
+<p class="itemPrice" ><strong>Price:</strong> <%= @item.price %></p>
+<p class="itemQuantity" ><strong>Quantity:</strong> <%= @item.quantity %></p>
+
+<a href="#" class="js-next" data-id="<%=@item.id%>">Next Item</a>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-next").on("click", function() {
+    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    debugger;
+    $.getJSON("/items/" + nextId + ".json", function(data) {
+      $(".itemName").text(data["name"]);
+      $(".itemPrice").text(data["price"]);
+      $(".itemQuantity").text(data["quantity"]);
+      // re-set the id to current on the link
+      $(".js-next").attr("data-id", data["id"]);
+    });
+  });
+});
+</script>
