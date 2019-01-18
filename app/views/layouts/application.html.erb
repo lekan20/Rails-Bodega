@@ -27,6 +27,7 @@
         <%= link_to "Items to Purchase", items_path, class: 'items-link' %> |
         <%= link_to "Profile", users_path %> |
         <%= link_to "See Cart", '/users/1/cart', class: 'see-cart' %> |
+        <%= link_to "Create New Item", new_item_path, class: 'new-item' %> |
         <%= link_to "Sign Out", signout_path %> |
         <% else %>
         <%= link_to "Sign Up", new_user_path %> |
