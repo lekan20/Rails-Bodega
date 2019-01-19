@@ -20,9 +20,13 @@
 
       posting.done(function(data) {
         var item = data;
-        $("#itemName").text("Name:" + item["name"]);
-        $("#itemPrice").text("$" + item["price"]);
-        $("#itemQuantity").text("Quantity:" + item["quantity"]);
+        $("#item_name").val("")
+        $("#item_price").val("")
+        $("#item_quantity").val("")
+
+        $("#itemName").text("Name: " + item["name"]);
+        $("#itemPrice").text("Price: $" + item["price"]);
+        $("#itemQuantity").text("Quantity: " + item["quantity"]);
       });
     });
   });
