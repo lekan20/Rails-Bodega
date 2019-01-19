@@ -7,12 +7,11 @@
 <script type="text/javascript" charset="utf-8">
 $(function () {
   $(".js-next").on("click", function() {
-    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-    debugger;
+    let nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.getJSON("/items/" + nextId + ".json", function(data) {
-      $(".itemName").text(data["name"]);
-      $(".itemPrice").text(data["price"]);
-      $(".itemQuantity").text(data["quantity"]);
+      $(".itemName").text("Name: " + data["name"]);
+      $(".itemPrice").text("Price: " + data["price"]);
+      $(".itemQuantity").text("Quantity: " + data["quantity"]);
       $(".js-next").attr("data-id", data["id"]);
     });
   });

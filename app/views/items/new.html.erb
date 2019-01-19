@@ -14,9 +14,9 @@
       //prevent form from submitting the default way
       e.preventDefault();
 
-      var values = $(this).serialize();
+      let values = $(this).serialize();
 
-      var posting = $.post('/items', values);
+      let posting = $.post('/items', values);
 
       posting.done(function(data) {
         var item = data;
