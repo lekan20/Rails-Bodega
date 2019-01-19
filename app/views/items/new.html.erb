@@ -1,4 +1,4 @@
-<h1>New Purchase</h1>
+<h1>New Item</h1>
 
 <%= render 'form' %>
 
@@ -20,10 +20,9 @@
 
       posting.done(function(data) {
         var item = data;
-        debugger;
-        $("#itemName").text(item["name"]);
+        $("#itemName").text("Name:" + item["name"]);
         $("#itemPrice").text("$" + item["price"]);
-        $("#itemQuantity").text(item["quantity"]);
+        $("#itemQuantity").text("Quantity:" + item["quantity"]);
       });
     });
   });

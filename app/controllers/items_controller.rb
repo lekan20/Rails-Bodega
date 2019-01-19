@@ -25,8 +25,8 @@ class ItemsController < ApplicationController
     @item = Item.new(items_params)
     respond_to do |format|
       if @item.save
+        format.json { render json: @item, notice: 'Item was successfully created.' }
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render json: @item }
       else
         format.html { render :new }
       end
