@@ -91,10 +91,8 @@ User.prototype.userHTML = function () {
 
 
 	return (`
-		<div>
-      <ol>${userItems} </ol>
-      ol>${itemQuantity}</ol>
-    </div>
+		<div><ol>${userItems} </ol></div>
+    <div><ol>${itemQuantity}</ol></div>
 
 	`)
 }
