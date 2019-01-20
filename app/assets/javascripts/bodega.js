@@ -39,7 +39,7 @@ List.prototype.formatIndex = function() {
           <td> ${this.name} </td>
           <td> ${this.price} </td>
           <td> ${this.quantity} </td>
-          <td><a href='/items/${this.id}'>Pick Up</a></td>
+          <td><a href='/items/${this.id}'>View Item</a></td>
         </tr>
       </tbody>
     `)
