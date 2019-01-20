@@ -1,4 +1,4 @@
-<h1>Listing Purchases</h1>
+<h1>Listing of Items to Purchase</h1>
 
 <table class="table">
   <thead>
@@ -19,13 +19,13 @@
         <td><%= item.name %></td>
         <td>$<%= item.price %></td>
         <td><%= item.quantity %></td>
-        <td><%= link_to "View Item", item_path(item) %></td>  
+        <td><%= link_to "View Item", item_path(item) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
 
-<!-- <strong>Average Price of Purchases</strong> $<#%= @items.average_price %><br>
-<strong>Most Expensive to Purchase</strong> <#%= @items.most_expensive.name %><br>
-<strong>Least Expensive to Purchase</strong> <#%= @items.least_expensive.name %><br><br> -->
+<strong>Average Price of Purchases</strong> $<%= @items.average_price %><br>
+<strong>Most Expensive to Purchase</strong> <%= @items.most_expensive.name %><br>
+<strong>Least Expensive to Purchase</strong> <%= @items.least_expensive.name %><br><br>

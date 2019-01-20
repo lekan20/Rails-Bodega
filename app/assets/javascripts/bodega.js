@@ -73,13 +73,28 @@ class User {
 }
 
 User.prototype.userHTML = function () {
-
-	let userItems = this.items.map((item, index) => {
+  let itemQuantity = this.user_items.map((user_item) => {
     return (`
-			<li>${item.name}</li>
+      <li>Quantity: ${user_item.quantity}</li>
+    `)
+  }).join('')
+  // debugger;
+	let userItems = this.items.map((item, index) => {
+    // debugger;
+    return (`
+      <li>
+			  <td>${item.name}</td>
+        <td>$${item.price}</td>
+      </li>
 		`)
 	}).join('')
+
+
 	return (`
-		<div><ol>${userItems}</ol></div>
+		<div>
+      <ol>${userItems} </ol>
+      ol>${itemQuantity}</ol>
+    </div>
+
 	`)
 }
