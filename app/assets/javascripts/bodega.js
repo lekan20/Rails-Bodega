@@ -55,7 +55,7 @@ $(function () {
 		}).done(function (response) {
 
 			let newUser = new User(response)
-			$("div.cart").html(newUser.userHTML())
+			$("div.cart").html(newUser.cartHTML())
 		});
 		e.preventDefault();
 	})
@@ -72,7 +72,7 @@ class User {
 	}
 }
 
-User.prototype.userHTML = function () {
+User.prototype.cartHTML = function () {
   let itemQuantity = this.user_items.map((user_item) => {
     return (`
       <li>Quantity: ${user_item.quantity}</li>
@@ -91,8 +91,10 @@ User.prototype.userHTML = function () {
 
 
 	return (`
-		<div><ol>${userItems} </ol></div>
-    <div><ol>${itemQuantity}</ol></div>
+    <div>
+      <ol>${userItems}</ol>
+      <ol>${itemQuantity}</ol>
+    </div>
 
 	`)
 }
