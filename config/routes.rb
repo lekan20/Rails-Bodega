@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'signin', to: "sessions#new"
   post "/sessions/create", to: "sessions#create"
   post '/user_items/new', to: "user_items#new"
-  delete '/signout', to: "sessions#destroy"
+  get '/signout', to: "sessions#destroy"
   get '/auth/facebook/callback' => 'sessions#create'
   resources :users do
     resources :cart, only: [:index]
