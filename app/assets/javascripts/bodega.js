@@ -16,7 +16,7 @@ const getItems = () => {
     .then(res => res.json())
     .then(items => {
       items.forEach((item) => {
-        let newList = new List(item)
+        let newList = new List(item) 
         $("div.items-to-purchase").append(newList.formatIndex())
       })
     })
@@ -37,9 +37,9 @@ List.prototype.formatIndex = function() {
       <tbody>
         <tr>
           <td> ${this.name} </td>
-          <td> ${this.price} </td>
+          <td> $${this.price}  </td>
           <td> ${this.quantity} </td>
-          <td><a href='/items/${this.id}'>View Item</a></td>
+          <td><a href='/items/${this.id}'> View Item</a></td>
         </tr>
       </tbody>
     `)
@@ -75,25 +75,34 @@ class User {
 User.prototype.cartHTML = function () {
   let itemQuantity = this.user_items.map((user_item) => {
     return (`
-      <li>Quantity: ${user_item.quantity}</li>
+      <li>${user_item.quantity}</li>
     `)
   }).join('')
-  // debugger;
+
 	let userItems = this.items.map((item, index) => {
-    // debugger;
+
     return (`
       <li>
 			  <td>${item.name}</td>
-        <td>$${item.price}</td>
       </li>
 		`)
 	}).join('')
 
+  let itemPrice = this.items.map((item, index) => {
+    return (`
+      <li>
+        <td>$${item.price}</td>
+      </li>
+    `)
+  }).join('')
+
 
 	return (`
-    <div>
-      <ol>${userItems}</ol>
-      <ol>${itemQuantity}</ol>
+    <div class="container-1">
+
+        <ol> <strong>Items</strong> ${userItems}</ol>
+        <ul style="list-style: none;"> <strong>Price</strong> ${itemPrice}</ul>
+        <ul style="list-style: none;"> <strong>Quantity</strong> ${itemQuantity}</ul>
     </div>
 
 	`)
