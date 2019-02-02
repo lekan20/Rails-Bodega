@@ -1,25 +1,54 @@
 $(function(){
-  $("a.items-link").on("click", function(e){
-    $.ajax({
-      method: "GET",
-      url: this.href,
-      dataType: 'json'
-    }).done(function(response) {
-      getItems()
-    })
-    e.preventDefault()
-  })
+  $("a.items-link").on("click", getItems)
+  $("a.sort-items").on("click", getItems)
+//   function(e){
+//     $.ajax({
+//       method: "GET",
+//       url: this.href,
+//       dataType: 'json'
+//     }).done(function(response) {
+//       getItems()
+//     })
+//
+//   })
 })
 
-const getItems = () => {
+const getItems = (e) => {
+  $("div.items-to-purchase").empty()
+  e.preventDefault()
   fetch('/items.json')
     .then(res => res.json())
     .then(items => {
-      items.forEach((item) => {
-        let newList = new List(item) 
+      if (e.currentTarget.className === "sort-items") {
+        sortedItemObject = [...items].sort((secondItem, firstItem) => {
+          if(secondItem.name < firstItem.name){
+            return -1
+          }
+          if(secondItem.name > firstItem.name){
+            return 1
+          }
+          if(secondItem.quantity < firstItem.quantity){
+            return -1
+          }
+          if(secondItem.quantity > firstItem.quantity){
+            return 1
+          }
+          return 0
+        })
+        sortedItemObject.forEach((sortedItem) => {
+          let newList = new List(sortedItem)
+          $("div.items-to-purchase").append(newList.formatIndex())
+
+        })
+      }
+      else {
+        items.forEach((item) => {
+        let newList = new List(item)
         $("div.items-to-purchase").append(newList.formatIndex())
+
       })
-    })
+    }
+  })
 }
 
 class List {

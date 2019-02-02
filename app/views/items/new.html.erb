@@ -13,7 +13,7 @@
     $('form').submit(function(e) {
       //prevent form from submitting the default way
       e.preventDefault();
-
+      
       let values = $(this).serialize();
 
       let posting = $.post('/items', values);

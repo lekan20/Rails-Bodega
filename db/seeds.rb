@@ -6,6 +6,9 @@ def create_items
 	Item.create(name: "Tortilla Chips", price: 4.0, quantity: 10)
 	Item.create(name: "Oatly Oat Milk", price: 5.0, quantity: 10)
 	Item.create(name: "Glad Zipper Food Storage bags", price: 3.0, quantity: 10)
+	Item.create(name: "Bananas", price: 1.0, quantity: 10)
+	Item.create(name: "Toilet Paper", price: 7.0, quantity: 10)
+	Item.create(name: "Protein Bars", price: 3.0, quantity: 10)
 end
 
 def create_users
